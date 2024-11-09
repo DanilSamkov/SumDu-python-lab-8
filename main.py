@@ -14,7 +14,6 @@ students = [
      'subjects': {'Математика': 5, 'Програмування': 2, 'Англ. мова': 4}}
 ]
 
-
 # Функція для додавання студента до словника
 def add_student(students_list, group_number, surname, name, patronymic, course, subjects):
     student = {
@@ -50,3 +49,38 @@ def main():
 if __name__ == "__main__":
     main()
 #Завдання для наступного студента: додати видалення студента зі словника
+
+
+
+
+
+# Створено студенткою Сідельнік Юлією Іванівною Кн-31/2
+
+# Функція для видалення студента зі словника за прізвищем, ім'ям та по батькові
+def remove_student(students_list, surname, name, patronymic):
+    for student in students_list:
+        if (student['surname'] == surname and student['name'] == name and student['patronymic'] == patronymic):
+            students_list.remove(student)
+            print(f"Студента {surname} {name} {patronymic} видалено.")
+            return
+    print(f"Студента {surname} {name} {patronymic} не знайдено.")
+
+# Головна функція з доповненням функції видалення
+def main():
+    # Додавання студента
+    add_student(students, 'КН-33', 'Петров', 'Петро', 'Петрович', 2, {'Математика': 2, 'Програмування': 2, 'Англ. мова': 2})
+
+    # Виведення словника
+    print_students_table(students)
+
+    # Видалення студента
+    remove_student(students, 'Петров', 'Петро', 'Петрович')
+
+    # Повторне виведення словника після видалення
+    print("\nПісля видалення:")
+    print_students_table(students)
+
+if __name__ == "__main__":
+    main()
+
+#Завдання для наступного студента: функція для сортування студентів за середньою оцінкою
