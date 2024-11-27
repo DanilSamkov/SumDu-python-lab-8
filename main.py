@@ -84,3 +84,52 @@ if __name__ == "__main__":
     main()
 
 #Завдання для наступного студента: функція для сортування студентів за середньою оцінкою
+
+
+
+
+
+# Частина коду, створена студентом КН-32/2 Святішенком Дмитром Олександровичем:
+
+# Функція для сортування студентів за середньою оцінкою
+def sort_students_by_average(students_list):
+    # Розрахунок середньої оцінки кожного студента
+    students_with_avg = [
+        {
+            'student': student,
+            'average': sum(student['subjects'].values()) / len(student['subjects'])
+        }
+        for student in students_list
+    ]
+
+    # Сортування за середньою оцінкою в порядку спадання
+    students_with_avg.sort(key=lambda x: x['average'], reverse=True)
+
+    # Виведення результату у вигляді таблиці
+    print(f"\n{'Група':<10}{'Прізвище':<15}{'Ім\я':<10}{'По батькові':<15}{'Курс':<10}{'Середня оцінка':<15}")
+    print("="*80)
+    for entry in students_with_avg:
+        student = entry['student']
+        print(f"{student['group_number']:<10}{student['surname']:<15}{student['name']:<10}{student['patronymic']:<15}{student['course']:<10}{entry['average']:<15.2f}"
+
+# Головна функція з доповненням функції сортування
+def main():
+    # Додавання студента
+    add_student(students, 'КН-33', 'Петров', 'Петро', 'Петрович', 2, {'Математика': 2, 'Програмування': 2, 'Англ. мова': 2})
+
+    # Виведення словника
+    print_students_table(students)
+
+    # Видалення студента
+    remove_student(students, 'Петров', 'Петро', 'Петрович')
+
+    # Повторне виведення словника після видалення
+    print("\nПісля видалення:")
+    print_students_table(students)
+
+    # Сортування студентів за середньою оцінкою
+    print("\nСортування студентів за середньою оцінкою:")
+    sort_students_by_average(students)
+
+if __name__ == "__main__":
+    main()
