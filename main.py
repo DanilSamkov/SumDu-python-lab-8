@@ -36,20 +36,6 @@ def print_students_table(students_list):
         print(f"{student['group_number']:<10}{student['surname']:<15}{student['name']:<10}{student['patronymic']:<15}{student['course']:<10}{subjects:<30}")
 
 
-# Головна функція
-def main():
-    # Додавання студента
-    add_student(students, 'КН-33', 'Петров', 'Петро', 'Петрович', 2, {'Математика': 2, 'Програмування': 2, 'Англ. мова': 2})
-
-
-    # Виведення словника
-    print_students_table(students)
-
-
-if __name__ == "__main__":
-    main()
-#Завдання для наступного студента: додати видалення студента зі словника
-
 
 
 
@@ -64,24 +50,6 @@ def remove_student(students_list, surname, name, patronymic):
             print(f"Студента {surname} {name} {patronymic} видалено.")
             return
     print(f"Студента {surname} {name} {patronymic} не знайдено.")
-
-# Головна функція з доповненням функції видалення
-def main():
-    # Додавання студента
-    add_student(students, 'КН-33', 'Петров', 'Петро', 'Петрович', 2, {'Математика': 2, 'Програмування': 2, 'Англ. мова': 2})
-
-    # Виведення словника
-    print_students_table(students)
-
-    # Видалення студента
-    remove_student(students, 'Петров', 'Петро', 'Петрович')
-
-    # Повторне виведення словника після видалення
-    print("\nПісля видалення:")
-    print_students_table(students)
-
-if __name__ == "__main__":
-    main()
 
 #Завдання для наступного студента: функція для сортування студентів за середньою оцінкою
 
@@ -110,9 +78,28 @@ def sort_students_by_average(students_list):
     print("="*80)
     for entry in students_with_avg:
         student = entry['student']
-        print(f"{student['group_number']:<10}{student['surname']:<15}{student['name']:<10}{student['patronymic']:<15}{student['course']:<10}{entry['average']:<15.2f}"
+        print(f"{student['group_number']:<10}{student['surname']:<15}{student['name']:<10}{student['patronymic']:<15}{student['course']:<10}{entry['average']:<15.2f}")
 
-# Головна функція з доповненням функції сортування
+
+
+
+
+# Частина коду, створена студентом КН-31/2 Лендою Микитою Романовичем:
+
+def sort_students_by_surname(students_list):
+    n = len(students_list)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if students_list[j]['surname'] > students_list[j + 1]['surname']:
+                # Заміна місцями
+                students_list[j], students_list[j + 1] = students_list[j + 1], students_list[j]
+
+#Завдання для наступного студента: функція для пошуку студента користувачем з прізвищем
+
+
+
+
+# Головна функція з всіма доповненнями
 def main():
     # Додавання студента
     add_student(students, 'КН-33', 'Петров', 'Петро', 'Петрович', 2, {'Математика': 2, 'Програмування': 2, 'Англ. мова': 2})
@@ -130,6 +117,11 @@ def main():
     # Сортування студентів за середньою оцінкою
     print("\nСортування студентів за середньою оцінкою:")
     sort_students_by_average(students)
+
+    # Сортування студентів за прізвищем
+    sort_students_by_surname(students)
+    print("\nСортування студентів за прізвищем:")
+    print_students_table(students)
 
 if __name__ == "__main__":
     main()
