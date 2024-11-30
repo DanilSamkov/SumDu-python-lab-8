@@ -29,7 +29,7 @@ def add_student(students_list, group_number, surname, name, patronymic, course, 
 
 # Функція для виведення словника у вигляді таблиці
 def print_students_table(students_list):
-    print(f"{'Група':<10}{'Прізвище':<15}{'Ім\я':<10}{'По батькові':<15}{'Курс':<10}{'Предмети':<30}")
+    print(f"{'Група':<10}{'Прізвище':<15}{'Ім\'я':<10}{'По батькові':<15}{'Курс':<10}{'Предмети':<30}")
     print("="*107)
     for student in students_list:
         subjects = ', '.join([f"{subject}: {grade}" for subject, grade in student['subjects'].items()])
@@ -106,11 +106,11 @@ def sort_students_by_average(students_list):
     students_with_avg.sort(key=lambda x: x['average'], reverse=True)
 
     # Виведення результату у вигляді таблиці
-    print(f"\n{'Група':<10}{'Прізвище':<15}{'Ім\я':<10}{'По батькові':<15}{'Курс':<10}{'Середня оцінка':<15}")
+    print(f"\n{'Група':<10}{'Прізвище':<15}{'Ім\'я':<10}{'По батькові':<15}{'Курс':<10}{'Середня оцінка':<15}")
     print("="*80)
     for entry in students_with_avg:
         student = entry['student']
-        print(f"{student['group_number']:<10}{student['surname']:<15}{student['name']:<10}{student['patronymic']:<15}{student['course']:<10}{entry['average']:<15.2f}"
+        print(f"{student['group_number']:<10}{student['surname']:<15}{student['name']:<10}{student['patronymic']:<15}{student['course']:<10}{entry['average']:<15.2f}")
 
 # Головна функція з доповненням функції сортування
 def main():
